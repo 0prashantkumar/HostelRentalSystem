@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -84,7 +85,7 @@ public class Users {
 		this.mobileNumber = mobileNumber;
 	}
 	
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
 	public List<Bookings> getBooking() {
 		return booking;
 	}
@@ -93,7 +94,7 @@ public class Users {
 		this.booking = booking;
 	}
 	
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
 	public List<Visits> getVisit() {
 		return visit;
 	}

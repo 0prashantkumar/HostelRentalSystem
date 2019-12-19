@@ -3,8 +3,10 @@ package com.hostelrental.pojos;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -56,7 +58,7 @@ public class Hostels {
 		this.hostelId = hostelId;
 	}
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	@JoinColumn(name = "hostel_owner_id")
 	public Owners getHostelOwnerId() {
 		return hostelOwnerId;
